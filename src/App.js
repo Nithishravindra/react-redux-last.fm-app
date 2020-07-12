@@ -1,17 +1,17 @@
-import React from "react";
 import Main from "./components/Main";
-// import { Provider } from "react-redux";
-import "./App.css";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import * as actionCreator from "./actions/actionCreator";
 
-function App() {
-  return (
-    // <Provider>
-    <div className="App">
-      <h1>REDUX</h1>
-      <Main />
-    </div>
-    // </Provider>
-  );
+function mapStateToProps(state) {
+  return {
+    artists: state.artist,
+    songs: state.song,
+  };
 }
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(actionCreator, dispatch);
+}
+const App = connect(mapStateToProps, mapDispatchToProps)(Main);
 
 export default App;
