@@ -4,9 +4,10 @@ import { connect } from "react-redux";
 import * as actionCreator from "./actions/actionCreator";
 
 function mapStateToProps(state) {
+  console.log("state = ", state);
   return {
-    artists: state.artist,
-    songs: state.song,
+    topArtists: state.topArtists,
+    artistDetails: state.artistDetails,
   };
 }
 function mapDispatchToProps(dispatch) {

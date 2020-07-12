@@ -1,16 +1,15 @@
-import { createStore, combineReducers, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
-
+import { createStore } from "redux";
+// import thunk from "redux-thunk";
 import rootreducer from "./reducers/rootReducer";
-import artist from "./data/artist";
-import song from "./data/song";
+import topArtists from "./data/topArtist";
+import artistDetails from "./data/artistDetails";
 
 const defaultState = {
-  artist,
-  song,
+  topArtists,
+  artistDetails,
 };
 
-console.log("store", defaultState);
+console.log("deafult store = ", defaultState);
 
 const store = createStore(rootreducer, defaultState);
 

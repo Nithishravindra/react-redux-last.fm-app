@@ -1,11 +1,11 @@
 import { combineReducers } from "redux";
 import { routerReducer } from "react-router-redux";
-import artist from "./artist";
-import songs from "./songs";
+import topArtists from "./topArtist";
+import artistDetails from "./artistDetails";
 
 const rootReducer = combineReducers({
-  artist,
-  songs,
+  topArtists,
+  artistDetails,
   routing: routerReducer,
 });
 
