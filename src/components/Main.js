@@ -1,14 +1,16 @@
 import React from "react";
 import Artist from "./Artist";
 import Header from "./Header";
+import "../styles/main.css";
 
 const Main = (props) => {
   console.log("Main ", props);
   return (
     <section>
       <Header />
-      <h1>Hello</h1>
-      <Artist {...props} />
+      <div className="Main-content">
+        <Artist {...props} />
+      </div>
     </section>
   );
 };

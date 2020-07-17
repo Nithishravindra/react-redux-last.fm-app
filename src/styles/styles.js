@@ -7,7 +7,7 @@ export const headerStyles = {
   },
   appBar: {
     backgroundColor: "black",
-    padding: "10px 0",
+    padding: "0px",
   },
   t: {
     display: "flex",

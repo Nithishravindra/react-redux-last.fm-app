@@ -10,7 +10,7 @@ import { headerStyles } from "../styles/styles";
 class Header extends Component {
   render() {
     const { classes } = this.props;
-    console.log(classes);
+    // console.log(classes);
     return (
       <div className={classes.root}>
         <AppBar className={classes.appBar}>
@@ -19,18 +19,17 @@ class Header extends Component {
               <TextField
                 className={classes.textField}
                 id="artist"
-                label="Artist name"
+                placeholder="Search artist"
                 variant="outlined"
                 // value={userSearched}
-                // onChange={this.__handleUserChange}
-                margin="normal"
-                fullWidth={false}
+                // onChange={this.handleUserChange}
+                margin="dense"
               />
             </form>
             <Button
               variant="contained"
               color="secondary"
-              // onClick={this.__fetchArtists.bind(this)}
+              // onClick={thisfetchArtists.bind(this)}
               type="submit"
             >
               Search
