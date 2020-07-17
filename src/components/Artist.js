@@ -6,16 +6,16 @@ import ArtistDetail from "./ArtistDetail";
 
 class Artist extends React.Component {
   // componentDidMount() {
-  // let artistName = "raghu dixit";
+  //    let artistName = "raghu dixit";
   //   let album = "kanye west";
-  //   // console.log(process.env.REACT_APP_ARTISTAPI);
-  //   // console.log(process.env);
-  // let topArtist = `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${process.env.REACT_APP_ARTISTAPI}&format=json`;
-  //   // let musicAlbum = `http://ws.audioscrobbler.com/2.0/?method=album.search&album=${album}&api_key=${process.env.REACT_APP_ARTISTAPI}&format=json`;
-  // let artisitInfo = `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artistName}&api_key=${process.env.REACT_APP_ARTISTAPI}&format=json`;
-  // axios.get(artisitInfo).then((result) => {
-  //   console.log(result);
-  // });
+  //   console.log(process.env.REACT_APP_ARTISTAPI);
+  //   console.log(process.env);
+  //   let topArtist = `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${process.env.REACT_APP_ARTISTAPI}&format=json`;
+  //   let musicAlbum = `http://ws.audioscrobbler.com/2.0/?method=album.search&album=${album}&api_key=${process.env.REACT_APP_ARTISTAPI}&format=json`;
+  //   let artisitInfo = `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artistName}&api_key=${process.env.REACT_APP_ARTISTAPI}&format=json`;
+  //    axios.get(artisitInfo).then((result) => {
+  //      console.log(result);
+  //    });
   // }
 
   render() {
@@ -29,7 +29,11 @@ class Artist extends React.Component {
             exact
             path="/"
             render={(listProps) => (
-              <TopArtist {...listProps} artists={this.props.topArtists} />
+              <TopArtist
+                {...listProps}
+                {...this.props}
+                artists={this.props.topArtists}
+              />
             )}
           />
           {/* <Route exact path="/" component={TopArtist}></Route> */}
@@ -38,6 +42,7 @@ class Artist extends React.Component {
             render={(detailProps) => (
               <ArtistDetail
                 {...detailProps}
+                {...this.props}
                 artistDetails={this.props.artistDetails}
               />
             )}
