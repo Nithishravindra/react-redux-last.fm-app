@@ -14,9 +14,9 @@ class Artist extends React.Component {
             path="/"
             render={(listProps) => (
               <TopArtist
-                {...listProps}
-                {...this.props}
-                artists={this.props.topArtists}
+              // {...listProps}
+              // {...this.props}
+              // artists={this.props.topArtists}
               />
             )}
           />

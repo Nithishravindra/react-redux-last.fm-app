@@ -1,5 +1,15 @@
-.Main-content {
-  display: flex;
-  align-items: flex-start;
+.Artist-content {
+  flex: 1;
+  padding: 20px;
   margin-top: 84px;
+  min-height: 150vh;
+}
+
+.artist-listing__blocks {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+a {
+  color: green;
 }

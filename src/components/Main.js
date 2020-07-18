@@ -8,7 +8,7 @@ const Main = (props) => {
   return (
     <section>
       <Header />
-      <div className="Main-content">
+      <div className="Artist-content">
         <Artist {...props} />
       </div>
     </section>
