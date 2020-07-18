@@ -8,7 +8,6 @@ import Typography from "@material-ui/core/Typography";
 import { cardTileStyles } from "../styles/styles";
 
 const ArtistTile = (props) => {
-  console.log(props);
   const { classes, artist, i } = props;
   return (
     <Card className={classes.card}>
@@ -22,19 +21,21 @@ const ArtistTile = (props) => {
           {artist[i].name}
         </Typography>
         <Typography component="p" className={classes.overview}>
-          PLAYCOUNT - {artist[i].playcount}
+          <strong>PLAYCOUNT</strong> - {artist[i].playcount}
           <br />
-          LISTENERS - {artist[i].listeners}
-          <br />
+          <strong>LISTENERS</strong> - {artist[i].listeners}
         </Typography>
         <Typography component="p" className={classes.overview}>
-          URL - <a href={artist[i].url}>{artist[i].url}</a>
+          <strong>URL</strong> -{" "}
+          <a href={artist[i].url}>Click here for more info</a>
         </Typography>
       </CardContent>
     </Card>
   );
 };
+
 ArtistTile.propTypes = {
   classes: PropTypes.object.isRequired,
 };
+
 export default withStyles(cardTileStyles)(ArtistTile);

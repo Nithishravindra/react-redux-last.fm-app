@@ -5,7 +5,7 @@ import ArtistDetail from "./ArtistDetail";
 
 class Artist extends React.Component {
   render() {
-    console.log(" Artist = ", this.props);
+    // console.log(" Artist = ", this.props);
     return (
       <main>
         <Switch>

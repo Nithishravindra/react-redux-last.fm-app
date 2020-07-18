@@ -17,7 +17,6 @@ export default class TopArtist extends Component {
 
   renderArtistTiles() {
     let renderBlock = [];
-
     renderBlock =
       this.state.artists.artist !== undefined
         ? this.state.artists.artist.map((item, index) => (
@@ -35,7 +34,7 @@ export default class TopArtist extends Component {
   render() {
     return (
       <div className="artist">
-        <h1>TOP ARTIST PAGE</h1>
+        <h1 className="title">TOP 50 ARTIST PAGE</h1>
         <div className="artist-listing__blocks">{this.renderArtistTiles()}</div>
       </div>
     );
