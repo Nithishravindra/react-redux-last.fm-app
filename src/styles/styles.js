@@ -30,6 +30,7 @@ export const cardTileStyles = {
     minHeight: 64,
     maxHeight: 64,
     overflow: "hidden",
+    fontSize: "1.2rem",
   },
   overview: {
     WebkitBoxOrient: "vertical",
@@ -37,12 +38,5 @@ export const cardTileStyles = {
     overflow: "hidden",
     display: "-webkit-box",
     WebkitLineClamp: 3,
-  },
-};
-
-export const detailsStyles = {
-  saveIcon: {
-    color: "#f92727ab",
-    fontSize: "45px",
   },
 };

@@ -7,24 +7,21 @@ export default class TopArtist extends Component {
     artists: [],
   };
 
-  async componentDidMount() {
-    let topArtist = `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${process.env.REACT_APP_ARTISTAPI}&format=json`;
-    let a = await axios.get(topArtist);
-    this.setState({
-      artists: a.data.artists,
-    });
+  componentDidMount() {
+    console.log("top artist ", this.props);
+    let topArtistURL = `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${process.env.REACT_APP_ARTISTAPI}&format=json`;
+    this.props.fetchData(topArtistURL);
   }
 
   renderArtistTiles() {
+    console.log(this.props.topArtist.artist);
+    console.log("topArtist", this.props.topArtist.artists);
+
     let renderBlock = [];
     renderBlock =
-      this.state.artists.artist !== undefined
-        ? this.state.artists.artist.map((item, index) => (
-            <ArtistTile
-              key={index}
-              i={index}
-              artist={this.state.artists.artist}
-            />
+      this.props.topArtist.artist !== undefined
+        ? this.props.topArtist.artist.map((item, index) => (
+            <ArtistTile key={index} i={index} artist={this.props.topArtist} />
           ))
         : [];
 

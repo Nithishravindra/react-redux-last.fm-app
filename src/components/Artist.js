@@ -5,22 +5,12 @@ import ArtistDetail from "./ArtistDetail";
 
 class Artist extends React.Component {
   render() {
-    // console.log(" Artist = ", this.props);
+    console.log(" Artist ", this.props);
     return (
       <main>
         <Switch>
-          <Route
-            exact
-            path="/"
-            render={(listProps) => (
-              <TopArtist
-              // {...listProps}
-              // {...this.props}
-              // artists={this.props.topArtists}
-              />
-            )}
-          />
-
+          <Route exact path="/" render={() => <TopArtist {...this.props} />} />
+          {/* 
           <Route
             path="/artistInfo/:artistName"
             render={(detailProps) => (
@@ -30,7 +20,7 @@ class Artist extends React.Component {
                 artistDetails={this.props.artistDetails}
               />
             )}
-          />
+          /> */}
         </Switch>
       </main>
     );
