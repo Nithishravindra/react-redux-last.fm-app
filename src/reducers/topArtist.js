@@ -6,7 +6,7 @@ export function topArtist(state = [], action) {
     case FETCH_DATA_SUCCESS:
       return {
         ...action.topArtist,
-        artist: action.topArtist.artists.artist,
+        artists: action.topArtist.artists.artist,
       };
 
     default:

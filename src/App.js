@@ -5,7 +5,7 @@ import * as actionCreators from "./actions/actionCreator";
 import Main from "./components/Main";
 
 const mapStateToProps = (state) => {
-  console.log("state = ", state);
+  console.log("state = ", state.topArtist);
   return {
     topArtist: state.topArtist,
     isLoading: state.isLoading,

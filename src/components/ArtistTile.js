@@ -8,9 +8,8 @@ import Typography from "@material-ui/core/Typography";
 import { cardTileStyles } from "../styles/styles";
 
 const ArtistTile = (props) => {
-  const { classes, i } = props;
-  console.log(props);
-  let artist = props.artist.artist;
+  const { classes, i, topArtist } = props;
+  let artist = topArtist.artists;
   return (
     <Card className={classes.card}>
       <CardContent>
