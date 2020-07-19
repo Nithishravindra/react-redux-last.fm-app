@@ -40,3 +40,17 @@ export const cardTileStyles = {
     WebkitLineClamp: 3,
   },
 };
+
+export const cardStyles = {
+  title: {
+    minHeight: 64,
+    maxHeight: 64,
+    overflow: "hidden",
+    fontSize: "1.2rem",
+  },
+  overview: {
+    padding: "1rem",
+    maxHeight: 500,
+    overflow: "auto",
+  },
+};

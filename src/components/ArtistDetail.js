@@ -3,7 +3,7 @@ import axios from "axios";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import { cardTileStyles } from "../styles/styles";
+import { cardStyles } from "../styles/styles";
 import { withStyles } from "@material-ui/core/styles";
 
 class ArtistDetail extends React.Component {
@@ -12,7 +12,7 @@ class ArtistDetail extends React.Component {
   };
 
   async componentDidMount() {
-    let artistName = "raghu dixit";
+    let artistName = "eric clapton";
 
     let artisitInfo = `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artistName}&api_key=${process.env.REACT_APP_ARTISTAPI}&format=json`;
     let a = await axios.get(artisitInfo);
@@ -23,10 +23,22 @@ class ArtistDetail extends React.Component {
 
   render() {
     const { classes } = this.props;
+    console.log(classes);
+
     console.log(this.state.info);
-    let x = this.state.info.stats ? this.state.info.stats.playcount : null;
-    let y = this.state.info.stats ? this.state.info.stats.listeners : null;
+    let playCount = this.state.info.stats
+      ? this.state.info.stats.playcount
+      : null;
+    let listeners = this.state.info.stats
+      ? this.state.info.stats.listeners
+      : null;
     let para = this.state.info.bio ? this.state.info.bio.content : null;
+
+    if (para !== null) {
+      let text = para.split("<");
+      para = text[0];
+    }
+
     let tag = this.state.info.tags
       ? this.state.info.tags.tag.map((item, index) => (
           <div key={index}>
@@ -37,20 +49,29 @@ class ArtistDetail extends React.Component {
 
     return (
       <Card>
-        <h2>{this.state.info.name}</h2>
         <CardContent>
-          <Typography>
-            <p>Playcount: {x}</p>
-            <p>Listeners: {y}</p>
-            <p>Tags: {tag}</p>
-            <p>
-              <strong>overview :</strong> {para}
-            </p>
+          <Typography gutterBottom component="h2" className={classes.title}>
+            <strong>{this.state.info.name}</strong>
           </Typography>
+          <Typography>
+            <strong>Playcount: </strong> {playCount}
+          </Typography>
+          <br />
+          <Typography>
+            <strong>Listeners:</strong> {listeners}
+          </Typography>
+          <br />
+          <Typography>
+            <strong>Tags:</strong>
+          </Typography>
+          <br />
+          {tag}
+          <br />
+          <strong>Overview :</strong> <p className={classes.overview}>{para}</p>
         </CardContent>
       </Card>
     );
   }
 }
 
-export default withStyles(cardTileStyles)(ArtistDetail);
+export default withStyles(cardStyles)(ArtistDetail);
