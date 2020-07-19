@@ -7,7 +7,7 @@ export function fetchIsLoading(bool) {
   };
 }
 
-export function fetchData(url) {
+export function fetchData(url, type) {
   return (dispatch) => {
     dispatch(fetchIsLoading(true));
     fetch(url)
@@ -20,18 +20,28 @@ export function fetchData(url) {
       })
       .then((response) => response.json())
       .then((item) => {
-        return dispatch(fetchDataSuccess(item));
+        return dispatch(fetchDataSuccess(item, type));
       })
-      .catch(() => dispatch(fetchDataErrored(true)));
+      .catch((err) => {
+        console.log("err", err);
+        return dispatch(fetchDataErrored(true));
+      });
   };
 }
 
-export function fetchDataSuccess(item) {
+export function fetchDataSuccess(item, type) {
   console.log(item);
-  return {
-    type: types.FETCH_DATA_SUCCESS,
-    topArtist: item,
-  };
+  if (type === "topArtist") {
+    return {
+      type: types.FETCH_DATA_SUCCESS,
+      topArtist: item,
+    };
+  } else {
+    return {
+      type: types.FETCH_ARTIST_DETAIL,
+      artistDetails: item,
+    };
+  }
 }
 
 export function fetchDataErrored(bool) {

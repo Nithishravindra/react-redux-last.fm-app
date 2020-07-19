@@ -4,7 +4,7 @@ import ArtistTile from "./ArtistTile";
 export default class TopArtist extends Component {
   componentDidMount() {
     let topArtistURL = `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${process.env.REACT_APP_ARTISTAPI}&format=json`;
-    this.props.fetchData(topArtistURL);
+    this.props.fetchData(topArtistURL, "topArtist");
   }
 
   renderArtistTiles() {

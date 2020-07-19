@@ -5,11 +5,11 @@ import * as actionCreators from "./actions/actionCreator";
 import Main from "./components/Main";
 
 const mapStateToProps = (state) => {
-  console.log("state = ", state.topArtist);
+  console.log("state = ", state);
   return {
     topArtist: state.topArtist,
     isLoading: state.isLoading,
-    // artistDetails: state.artistDetails,
+    artistDetails: state.artistDetails,
   };
 };
 
