@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import TopArtist from "./TopArtist";
-// import ArtistDetail from "./ArtistDetail";
+import ArtistDetail from "./ArtistDetail";
 
 class Artist extends React.Component {
   render() {
@@ -10,17 +10,11 @@ class Artist extends React.Component {
       <main>
         <Switch>
           <Route exact path="/" render={() => <TopArtist {...this.props} />} />
-          {/* 
+
           <Route
             path="/artistInfo/:artistName"
-            render={(detailProps) => (
-              <ArtistDetail
-                {...detailProps}
-                {...this.props}
-                artistDetails={this.props.artistDetails}
-              />
-            )}
-          /> */}
+            render={() => <ArtistDetail {...this.props} />}
+          />
         </Switch>
       </main>
     );

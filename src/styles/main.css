@@ -19,3 +19,9 @@ a {
   text-align: center;
   color: black;
 }
+
+.Details-content {
+  flex: 1;
+  padding: 20px;
+  margin-top: 84px;
+}
