@@ -6,11 +6,12 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core/styles";
 import { headerStyles } from "../styles/styles";
+import { Link } from "react-router-dom";
 
 class Header extends Component {
   render() {
     const { classes } = this.props;
-    // console.log(classes);
+    console.log("header", this.props);
     return (
       <div className={classes.root}>
         <AppBar className={classes.appBar}>
@@ -21,17 +22,26 @@ class Header extends Component {
                 id="artist"
                 placeholder="Search artist"
                 variant="outlined"
-                // value={userSearched}
-                // onChange={this.handleUserChange}
+                value={this.props.inputValue}
+                onChange={this.props.handleinput}
                 margin="dense"
               />
             </form>
-            <Button
-              variant="contained"
-              color="secondary"
-              // onClick={thisfetchArtists.bind(this)}
-              type="submit"
+
+            {this.props.inputValue}
+
+            <Link
+              className="link-header"
+              to={{
+                pathname: `/artistinfo/s`,
+                state: { artistName: "eric clapton" },
+              }}
             >
+              {" "}
+              Search{" "}
+            </Link>
+
+            <Button variant="contained" color="secondary" type="submit">
               Search
             </Button>
           </Toolbar>

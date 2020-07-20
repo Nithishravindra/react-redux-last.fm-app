@@ -7,7 +7,7 @@ const Main = (props) => {
   console.log("Main ", props);
   return (
     <section>
-      <Header />
+      <Header {...props} />
       <div className="Artist-content">
         <Artist {...props} />
       </div>

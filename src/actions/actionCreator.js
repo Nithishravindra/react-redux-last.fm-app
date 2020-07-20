@@ -50,3 +50,11 @@ export function fetchDataErrored(bool) {
     hasErrored: bool,
   };
 }
+
+export function handleinput(e) {
+  console.log("inputchange - actionCreator");
+  return {
+    type: types.INPUT_CHANGE,
+    text: e.target.value,
+  };
+}

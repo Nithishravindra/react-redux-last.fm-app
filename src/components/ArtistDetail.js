@@ -7,14 +7,18 @@ import { withStyles } from "@material-ui/core/styles";
 
 class ArtistDetail extends React.Component {
   componentDidMount() {
+    // let artistName = this.props.location.state
+    //   ? this.props.location.state.artistName
+    //   : "";
     let artistName = "eric clapton";
+
     let artisitURL = `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artistName}&api_key=${process.env.REACT_APP_ARTISTAPI}&format=json`;
     this.props.fetchData(artisitURL, "artistDetails");
   }
 
   render() {
     const { classes } = this.props;
-    console.log(this.props.artistDetails);
+    // console.log(this.props.location.state.artistName);
 
     let playCount = this.props.artistDetails.stats
       ? this.props.artistDetails.stats.playcount

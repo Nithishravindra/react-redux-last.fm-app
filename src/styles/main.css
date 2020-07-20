@@ -4,7 +4,6 @@
   margin-top: 84px;
   min-height: 150vh;
 }
-
 .artist-listing__blocks {
   display: flex;
   flex-wrap: wrap;
@@ -24,4 +23,10 @@ a {
   flex: 1;
   padding: 20px;
   margin-top: 84px;
+}
+
+.link-header {
+  color: white;
+  background-color: deeppink;
+  padding: 0.3rem;
 }
