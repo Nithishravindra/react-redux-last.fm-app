@@ -30,7 +30,6 @@ export function fetchData(url, type) {
 }
 
 export function fetchDataSuccess(item, type) {
-  console.log(item);
   if (type === "topArtist") {
     return {
       type: types.FETCH_DATA_SUCCESS,
@@ -51,8 +50,8 @@ export function fetchDataErrored(bool) {
   };
 }
 
-export function handleinput(e) {
-  console.log("inputchange - actionCreator");
+export function handleInput(e) {
+  // console.log(e.target.value);
   return {
     type: types.INPUT_CHANGE,
     text: e.target.value,

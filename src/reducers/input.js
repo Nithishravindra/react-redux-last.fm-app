@@ -1,11 +1,11 @@
 import { INPUT_CHANGE } from "../constants/ActionTypes";
 
-export function input(state = [], action) {
+export function inputValue(state = [], action) {
   switch (action.type) {
     case INPUT_CHANGE: {
       return {
-        ...state,
-        input: action.text,
+        ...state.input,
+        inputValue: action.text,
       };
     }
 

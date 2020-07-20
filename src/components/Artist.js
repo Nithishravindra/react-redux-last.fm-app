@@ -13,7 +13,9 @@ class Artist extends React.Component {
           <Route
             exact
             path="/artistInfo/:artistName"
-            render={() => <ArtistDetail {...this.props} />}
+            render={(routeProps) => (
+              <ArtistDetail {...{ ...this.props, ...routeProps }} />
+            )}
           />
         </Switch>
       </main>

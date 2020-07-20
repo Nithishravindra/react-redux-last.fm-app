@@ -11,39 +11,29 @@ import { Link } from "react-router-dom";
 class Header extends Component {
   render() {
     const { classes } = this.props;
-    console.log("header", this.props);
     return (
       <div className={classes.root}>
         <AppBar className={classes.appBar}>
           <Toolbar className={classes.t}>
-            <form>
-              <TextField
-                className={classes.textField}
-                id="artist"
-                placeholder="Search artist"
-                variant="outlined"
-                value={this.props.inputValue}
-                onChange={this.props.handleinput}
-                margin="dense"
-              />
-            </form>
-
-            {this.props.inputValue}
+            <TextField
+              className={classes.textField}
+              id="artist"
+              placeholder="Search artist"
+              variant="outlined"
+              value={this.props.inputValue}
+              onChange={this.props.handleInput}
+              margin="dense"
+            />
 
             <Link
-              className="link-header"
               to={{
-                pathname: `/artistinfo/s`,
-                state: { artistName: "eric clapton" },
+                pathname: `/artistinfo/${this.props.input.inputValue}`,
               }}
             >
-              {" "}
-              Search{" "}
+              <Button variant="contained" color="secondary" type="submit">
+                Search
+              </Button>
             </Link>
-
-            <Button variant="contained" color="secondary" type="submit">
-              Search
-            </Button>
           </Toolbar>
         </AppBar>
       </div>

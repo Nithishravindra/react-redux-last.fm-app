@@ -30,3 +30,7 @@ a {
   background-color: deeppink;
   padding: 0.3rem;
 }
+
+a {
+  text-decoration: none;
+}

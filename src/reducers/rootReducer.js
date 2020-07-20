@@ -2,12 +2,12 @@ import { combineReducers } from "redux";
 
 import { topArtist } from "./topArtist";
 import { artistDetails } from "./artistDetails";
-import { input } from "./input";
+import { inputValue } from "./input";
 
 const rootReducer = combineReducers({
   topArtist,
   artistDetails,
-  input,
+  inputValue,
 });
 
 export default rootReducer;

@@ -6,12 +6,21 @@ import { cardStyles } from "../styles/styles";
 import { withStyles } from "@material-ui/core/styles";
 
 class ArtistDetail extends React.Component {
-  componentDidMount() {
-    // let artistName = this.props.location.state
-    //   ? this.props.location.state.artistName
-    //   : "";
-    let artistName = "eric clapton";
+  componentDidUpdate(prevProps) {
+    let artistName = this.props.match.params.artistName;
+    console.log(artistName, "====");
+    console.log("componentDidUpdate");
+    console.log(prevProps);
 
+    if (artistName !== prevProps.match.params.artistName) {
+      let artisitURL = `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artistName}&api_key=${process.env.REACT_APP_ARTISTAPI}&format=json`;
+      this.props.fetchData(artisitURL, "artistDetails");
+    }
+  }
+
+  componentDidMount() {
+    window.scrollTo(0, 0);
+    let artistName = this.props.match.params.artistName;
     let artisitURL = `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artistName}&api_key=${process.env.REACT_APP_ARTISTAPI}&format=json`;
     this.props.fetchData(artisitURL, "artistDetails");
   }

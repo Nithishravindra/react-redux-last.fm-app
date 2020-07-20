@@ -7,7 +7,7 @@ import Main from "./components/Main";
 const mapStateToProps = (state) => {
   console.log("state = ", state);
   return {
-    inputValue: state.inputValue,
+    input: state.inputValue,
     topArtist: state.topArtist,
     isLoading: state.isLoading,
     artistDetails: state.artistDetails,
