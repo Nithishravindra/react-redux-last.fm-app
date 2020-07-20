@@ -8,10 +8,6 @@ import { withStyles } from "@material-ui/core/styles";
 class ArtistDetail extends React.Component {
   componentDidUpdate(prevProps) {
     let artistName = this.props.match.params.artistName;
-    console.log(artistName, "====");
-    console.log("componentDidUpdate");
-    console.log(prevProps);
-
     if (artistName !== prevProps.match.params.artistName) {
       let artisitURL = `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artistName}&api_key=${process.env.REACT_APP_ARTISTAPI}&format=json`;
       this.props.fetchData(artisitURL, "artistDetails");
@@ -19,15 +15,24 @@ class ArtistDetail extends React.Component {
   }
 
   componentDidMount() {
-    window.scrollTo(0, 0);
     let artistName = this.props.match.params.artistName;
     let artisitURL = `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artistName}&api_key=${process.env.REACT_APP_ARTISTAPI}&format=json`;
     this.props.fetchData(artisitURL, "artistDetails");
   }
 
+  isEmpty(obj) {
+    for (var key in obj) {
+      if (obj.hasOwnProperty(key)) return false;
+    }
+    return true;
+  }
+
   render() {
     const { classes } = this.props;
-    // console.log(this.props.location.state.artistName);
+
+    if (this.isEmpty(this.props.artistDetails)) {
+      return <h1>Artist not found</h1>;
+    }
 
     let playCount = this.props.artistDetails.stats
       ? this.props.artistDetails.stats.playcount
@@ -69,7 +74,8 @@ class ArtistDetail extends React.Component {
             <strong>{this.props.artistDetails.name}</strong>
           </Typography>
           <Typography>
-            <strong>Playcount: </strong> {playCount}
+            <strong>Playcount: </strong>
+            {playCount}
           </Typography>
           <br />
           <Typography>
@@ -77,21 +83,24 @@ class ArtistDetail extends React.Component {
           </Typography>
           <br />
           <Typography>
-            <strong>Tags:</strong>
+            {tags.length !== 0 ? <strong>Tags:</strong> : null}
           </Typography>
           <br />
           {tags}
           <br />
-          <strong>Overview :</strong> <p className={classes.overview}>{para}</p>
+          {para.length !== 0 ? <strong>Overview :</strong> : null}
+          <p className={classes.overview}>{para}</p>
           <Typography>
             <a href={this.props.artistDetails.url}>
               Click here to view profile of {this.props.artistDetails.name}
             </a>
           </Typography>
           <br />
-          <h2>
-            <strong>Similar artists: </strong>
-          </h2>
+          {similarTag.length !== 0 ? (
+            <h2>
+              <strong>Similar artists: </strong>
+            </h2>
+          ) : null}
           {similarTag}
         </CardContent>
       </Card>
