@@ -7,7 +7,7 @@ import { withStyles } from "@material-ui/core/styles";
 
 class ArtistDetail extends React.Component {
   componentDidMount() {
-    let artistName = "raghu dixit";
+    let artistName = "eric clapton";
     let artisitURL = `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artistName}&api_key=${process.env.REACT_APP_ARTISTAPI}&format=json`;
     this.props.fetchData(artisitURL, "artistDetails");
   }
@@ -33,7 +33,7 @@ class ArtistDetail extends React.Component {
       para = text[0];
     }
 
-    let tag = this.props.artistDetails.tags
+    let tags = this.props.artistDetails.tags
       ? this.props.artistDetails.tags.tag.map((item, index) => (
           <div key={index}>
             <li>{item.name}</li>
@@ -41,9 +41,17 @@ class ArtistDetail extends React.Component {
         ))
       : null;
 
+    let similarTag = this.props.artistDetails.similar
+      ? this.props.artistDetails.similar.artist.map((item, index) => (
+          <div key={index}>
+            <li>{item.name}</li>
+          </div>
+        ))
+      : null;
+
     return (
-      <Card>
-        <CardContent>
+      <Card className={classes.card}>
+        <CardContent className={classes.content}>
           <Typography gutterBottom component="h2" className={classes.title}>
             <strong>{this.props.artistDetails.name}</strong>
           </Typography>
@@ -59,9 +67,19 @@ class ArtistDetail extends React.Component {
             <strong>Tags:</strong>
           </Typography>
           <br />
-          {tag}
+          {tags}
           <br />
           <strong>Overview :</strong> <p className={classes.overview}>{para}</p>
+          <Typography>
+            <a href={this.props.artistDetails.url}>
+              Click here to view profile of {this.props.artistDetails.name}
+            </a>
+          </Typography>
+          <br />
+          <h2>
+            <strong>Similar artists: </strong>
+          </h2>
+          {similarTag}
         </CardContent>
       </Card>
     );

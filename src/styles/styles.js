@@ -2,9 +2,6 @@ export const headerStyles = {
   root: {
     flexGrow: 1,
   },
-  logo: {
-    width: "120px",
-  },
   appBar: {
     backgroundColor: "black",
     padding: "0px",
@@ -24,8 +21,8 @@ export const cardTileStyles = {
     maxWidth: 300,
     marginRight: 20,
     marginBottom: 20,
+    overflow: "auto",
   },
-
   title: {
     minHeight: 64,
     maxHeight: 64,
@@ -42,6 +39,11 @@ export const cardTileStyles = {
 };
 
 export const cardStyles = {
+  card: {
+    maxWidth: "auto",
+    boxShadow:
+      "0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+  },
   title: {
     minHeight: 64,
     maxHeight: 64,
@@ -49,8 +51,12 @@ export const cardStyles = {
     fontSize: "1.2rem",
   },
   overview: {
-    padding: "1rem",
     maxHeight: 500,
     overflow: "auto",
+  },
+  content: {
+    padding: "2rem",
+    fontSize: "1rem",
+    overflow: "hidden",
   },
 };
