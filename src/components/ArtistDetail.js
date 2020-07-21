@@ -5,6 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import { cardStyles } from "../styles/styles";
 import { withStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 class ArtistDetail extends React.Component {
   componentDidUpdate(prevProps) {
@@ -33,8 +34,38 @@ class ArtistDetail extends React.Component {
   render() {
     const { classes } = this.props;
 
+    let backToHome = (
+      <Link className={classes.backToHome} to="/">
+        BackToHome
+      </Link>
+    );
+
+    if (this.props.match.params.artistName === "undefined") {
+      return (
+        <div>
+          {" "}
+          {backToHome}
+          <h1>Enter Valid Name</h1>
+        </div>
+      );
+    }
+
+    if (this.props.isLoading) {
+      return (
+        <div className="center">
+          <CircularProgress color="secondary" size={150} disableShrink />
+        </div>
+      );
+    }
+
     if (this.isEmpty(this.props.artistDetails)) {
-      return <h1>Artist not found</h1>;
+      return (
+        <div>
+          {" "}
+          {backToHome}
+          <h1>Artist not found</h1>
+        </div>
+      );
     }
 
     let playCount = this.props.artistDetails.stats
@@ -70,11 +101,11 @@ class ArtistDetail extends React.Component {
         ))
       : null;
 
+    console.log(this.props);
+
     return (
       <div>
-        <Link className={classes.backToHome} to="/">
-          BackToHome
-        </Link>
+        {backToHome}
         <Card className={classes.card}>
           <CardContent className={classes.content}>
             <Typography gutterBottom component="h2" className={classes.title}>

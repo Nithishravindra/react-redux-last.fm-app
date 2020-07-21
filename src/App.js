@@ -8,6 +8,7 @@ const mapStateToProps = (state) => {
   console.log("state = ", state);
   return {
     input: state.inputValue,
+    hasErrored: state.hasErrored,
     topArtist: state.topArtist,
     isLoading: state.isLoading,
     artistDetails: state.artistDetails,

@@ -5,6 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import { cardTileStyles } from "../styles/styles";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 class TopArtist extends Component {
   componentDidMount() {
@@ -37,6 +38,23 @@ class TopArtist extends Component {
   };
 
   render() {
+    console.log(this.props);
+
+    if (this.props.hasErrored) {
+      return (
+        <div className="center">
+          <h1> Oops! Couldn't fetch data. </h1>
+        </div>
+      );
+    }
+
+    if (this.props.isLoading) {
+      return (
+        <div className="center">
+          <CircularProgress color="secondary" size={150} disableShrink />
+        </div>
+      );
+    }
     return (
       <div className="artist">
         <h1 className="title">TOP ARTISTS</h1>

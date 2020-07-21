@@ -1,8 +1,8 @@
-import * as types from "../constants/ActionTypes";
+import * as actionTypes from "../constants/ActionTypes";
 
 export function fetchIsLoading(bool) {
   return {
-    type: types.FETCH_IS_LOADING,
+    type: actionTypes.IS_LOADING,
     isLoading: bool,
   };
 }
@@ -32,12 +32,12 @@ export function fetchData(url, type) {
 export function fetchDataSuccess(item, type) {
   if (type === "topArtist") {
     return {
-      type: types.FETCH_DATA_SUCCESS,
+      type: actionTypes.FETCH_DATA_SUCCESS,
       topArtist: item,
     };
   } else {
     return {
-      type: types.FETCH_ARTIST_DETAIL,
+      type: actionTypes.FETCH_ARTIST_DETAIL,
       artistDetails: item,
     };
   }
@@ -45,14 +45,14 @@ export function fetchDataSuccess(item, type) {
 
 export function fetchDataErrored(bool) {
   return {
-    type: types.FETCH_HAS_ERRORED,
+    type: actionTypes.FETCH_HAS_ERRORED,
     hasErrored: bool,
   };
 }
 
 export function handleInput(e) {
   return {
-    type: types.INPUT_CHANGE,
+    type: actionTypes.INPUT_CHANGE,
     text: e.target.value,
   };
 }
