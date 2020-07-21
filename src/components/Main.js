@@ -3,15 +3,13 @@ import Artist from "./Artist";
 import Header from "./Header";
 import "../styles/main.css";
 
-const Main = (props) => {
-  console.log("Main ", props);
-  return (
-    <section>
-      <Header {...props} />
-      <div className="Artist-content">
-        <Artist {...props} />
-      </div>
-    </section>
-  );
-};
+const Main = (props) => (
+  <section>
+    <Header {...props} />
+    <div className="Artist-content">
+      <Artist {...props} />
+    </div>
+  </section>
+);
+
 export default Main;

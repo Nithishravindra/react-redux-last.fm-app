@@ -1,33 +1,59 @@
 import React, { Component } from "react";
-import ArtistTile from "./ArtistTile";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import Typography from "@material-ui/core/Typography";
+import { cardTileStyles } from "../styles/styles";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
 
-export default class TopArtist extends Component {
+class TopArtist extends Component {
   componentDidMount() {
+    window.scrollTo(0, 0);
     let topArtistURL = `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${process.env.REACT_APP_ARTISTAPI}&format=json`;
     this.props.fetchData(topArtistURL, "topArtist");
   }
 
-  renderArtistTiles() {
-    // console.log(this.props);
-    // console.log("topArtist", this.props.topArtist.artists);
-
-    let renderBlock = [];
-    renderBlock =
-      this.props.topArtist.artists !== undefined
-        ? this.props.topArtist.artists.map((item, index) => {
-            // console.log(this.props.topArtist.artists);
-            return <ArtistTile key={index} i={index} {...this.props} />;
-          })
-        : [];
-    return renderBlock;
-  }
+  renderArtistTile = (i) => {
+    const { classes, topArtist } = this.props;
+    let artist = topArtist.artists;
+    return (
+      <Card className={classes.card}>
+        <CardContent>
+          <Typography gutterBottom component="h2" className={classes.title}>
+            <strong>{artist[i].name}</strong>
+          </Typography>
+          <Typography component="p" className={classes.overview}>
+            <strong>PLAYCOUNT</strong> - {artist[i].playcount}
+            <br />
+            <strong>LISTENERS</strong> - {artist[i].listeners}
+          </Typography>
+          <Typography component="p" className={classes.overview}>
+            <strong>URL</strong> -{" "}
+            <a href={artist[i].url}>Click here for more info</a>
+          </Typography>
+        </CardContent>
+      </Card>
+    );
+  };
 
   render() {
     return (
       <div className="artist">
-        <h1 className="title">TOP 50 ARTIST PAGE</h1>
-        <div className="artist-listing__blocks">{this.renderArtistTiles()}</div>
+        <h1 className="title">TOP ARTISTS</h1>
+        <div className="artist-listing__blocks">
+          {this.props.topArtist.artists !== undefined
+            ? this.props.topArtist.artists.map((item, index) => {
+                return <div key={index}>{this.renderArtistTile(index)}</div>;
+              })
+            : []}
+        </div>
       </div>
     );
   }
 }
+
+TopArtist.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(cardTileStyles)(TopArtist);

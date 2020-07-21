@@ -10,6 +10,10 @@ export const headerStyles = {
     display: "flex",
     justifyContent: "flex-end",
   },
+  backToHome: {
+    display: "flex",
+    float: "left",
+  },
   textField: {
     margin: "0.5rem",
     backgroundColor: "white",

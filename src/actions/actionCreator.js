@@ -51,7 +51,6 @@ export function fetchDataErrored(bool) {
 }
 
 export function handleInput(e) {
-  // console.log(e.target.value);
   return {
     type: types.INPUT_CHANGE,
     text: e.target.value,

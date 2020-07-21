@@ -4,9 +4,11 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import { cardStyles } from "../styles/styles";
 import { withStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
 
 class ArtistDetail extends React.Component {
   componentDidUpdate(prevProps) {
+    window.scrollTo(0, 0);
     let artistName = this.props.match.params.artistName;
     if (artistName !== prevProps.match.params.artistName) {
       let artisitURL = `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artistName}&api_key=${process.env.REACT_APP_ARTISTAPI}&format=json`;
@@ -15,6 +17,7 @@ class ArtistDetail extends React.Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     let artistName = this.props.match.params.artistName;
     let artisitURL = `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artistName}&api_key=${process.env.REACT_APP_ARTISTAPI}&format=json`;
     this.props.fetchData(artisitURL, "artistDetails");
@@ -68,42 +71,47 @@ class ArtistDetail extends React.Component {
       : null;
 
     return (
-      <Card className={classes.card}>
-        <CardContent className={classes.content}>
-          <Typography gutterBottom component="h2" className={classes.title}>
-            <strong>{this.props.artistDetails.name}</strong>
-          </Typography>
-          <Typography>
-            <strong>Playcount: </strong>
-            {playCount}
-          </Typography>
-          <br />
-          <Typography>
-            <strong>Listeners:</strong> {listeners}
-          </Typography>
-          <br />
-          <Typography>
-            {tags.length !== 0 ? <strong>Tags:</strong> : null}
-          </Typography>
-          <br />
-          {tags}
-          <br />
-          {para.length !== 0 ? <strong>Overview :</strong> : null}
-          <p className={classes.overview}>{para}</p>
-          <Typography>
-            <a href={this.props.artistDetails.url}>
-              Click here to view profile of {this.props.artistDetails.name}
-            </a>
-          </Typography>
-          <br />
-          {similarTag.length !== 0 ? (
-            <h2>
-              <strong>Similar artists: </strong>
-            </h2>
-          ) : null}
-          {similarTag}
-        </CardContent>
-      </Card>
+      <div>
+        <Link className={classes.backToHome} to="/">
+          BackToHome
+        </Link>
+        <Card className={classes.card}>
+          <CardContent className={classes.content}>
+            <Typography gutterBottom component="h2" className={classes.title}>
+              <strong>{this.props.artistDetails.name}</strong>
+            </Typography>
+            <Typography>
+              <strong>Playcount: </strong>
+              {playCount}
+            </Typography>
+            <br />
+            <Typography>
+              <strong>Listeners:</strong> {listeners}
+            </Typography>
+            <br />
+            <Typography>
+              {tags.length !== 0 ? <strong>Tags:</strong> : null}
+            </Typography>
+            <br />
+            {tags}
+            <br />
+            {para.length !== 0 ? <strong>Overview :</strong> : null}
+            <p className={classes.overview}>{para}</p>
+            <Typography>
+              <a href={this.props.artistDetails.url}>
+                Click here to view profile of {this.props.artistDetails.name}
+              </a>
+            </Typography>
+            <br />
+            {similarTag.length !== 0 ? (
+              <h2>
+                <strong>Similar artists: </strong>
+              </h2>
+            ) : null}
+            {similarTag}
+          </CardContent>
+        </Card>
+      </div>
     );
   }
 }
