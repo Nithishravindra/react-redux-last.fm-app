@@ -38,8 +38,6 @@ class TopArtist extends Component {
   };
 
   render() {
-    console.log(this.props);
-
     if (this.props.hasErrored) {
       return (
         <div className="center">
@@ -55,6 +53,7 @@ class TopArtist extends Component {
         </div>
       );
     }
+
     return (
       <div className="artist">
         <h1 className="title">TOP ARTISTS</h1>

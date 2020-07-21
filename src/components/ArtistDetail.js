@@ -8,20 +8,23 @@ import { Link } from "react-router-dom";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 class ArtistDetail extends React.Component {
+  fetchArtistData(artistName) {
+    let artisitURL = `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artistName}&api_key=a5297112b152bc2e75ee90f207e25d7b&format=json`;
+    this.props.fetchData(artisitURL, "artistDetails");
+  }
+
   componentDidUpdate(prevProps) {
     window.scrollTo(0, 0);
     let artistName = this.props.match.params.artistName;
     if (artistName !== prevProps.match.params.artistName) {
-      let artisitURL = `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artistName}&api_key=${process.env.REACT_APP_ARTISTAPI}&format=json`;
-      this.props.fetchData(artisitURL, "artistDetails");
+      this.fetchArtistData(artistName);
     }
   }
 
   componentDidMount() {
     window.scrollTo(0, 0);
     let artistName = this.props.match.params.artistName;
-    let artisitURL = `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artistName}&api_key=${process.env.REACT_APP_ARTISTAPI}&format=json`;
-    this.props.fetchData(artisitURL, "artistDetails");
+    this.fetchArtistData(artistName);
   }
 
   isEmpty(obj) {
@@ -40,20 +43,20 @@ class ArtistDetail extends React.Component {
       </Link>
     );
 
+    if (this.props.isLoading) {
+      return (
+        <div className="center">
+          <CircularProgress color="secondary" size={150} disableShrink />
+        </div>
+      );
+    }
+
     if (this.props.match.params.artistName === "undefined") {
       return (
         <div>
           {" "}
           {backToHome}
           <h1>Enter Valid Name</h1>
-        </div>
-      );
-    }
-
-    if (this.props.isLoading) {
-      return (
-        <div className="center">
-          <CircularProgress color="secondary" size={150} disableShrink />
         </div>
       );
     }
@@ -100,8 +103,6 @@ class ArtistDetail extends React.Component {
           </div>
         ))
       : null;
-
-    console.log(this.props);
 
     return (
       <div>

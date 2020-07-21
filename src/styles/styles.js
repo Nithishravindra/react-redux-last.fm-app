@@ -63,4 +63,7 @@ export const cardStyles = {
     fontSize: "1rem",
     overflow: "hidden",
   },
+  backToHome: {
+    color: "white",
+  },
 };
