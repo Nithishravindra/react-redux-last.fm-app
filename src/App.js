@@ -5,7 +5,6 @@ import * as actionCreators from "./actions/actionCreator";
 import Main from "./components/Main";
 
 const mapStateToProps = (state) => {
-  console.log("state = ", state);
   return {
     input: state.inputValue,
     hasErrored: state.hasErrored,
