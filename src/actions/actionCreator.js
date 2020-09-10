@@ -12,6 +12,7 @@ export function fetchData(url, type) {
     dispatch(fetchIsLoading(true));
     fetch(url)
       .then((response) => {
+        console.log(response);
         if (!response.ok) {
           throw Error(response.statusText);
         }
