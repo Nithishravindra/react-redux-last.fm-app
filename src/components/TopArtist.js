@@ -10,7 +10,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 class TopArtist extends Component {
   componentDidMount() {
     window.scrollTo(0, 0);
-    let topArtistURL = `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${process.env.REACT_APP_ARTISTAPI}&format=json`;
+    let topArtistURL = `https://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${process.env.REACT_APP_ARTISTAPI}&format=json`;
     this.props.fetchData(topArtistURL, "topArtist");
   }
 

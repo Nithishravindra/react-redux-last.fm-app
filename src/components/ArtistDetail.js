@@ -9,7 +9,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 class ArtistDetail extends React.Component {
   fetchArtistData(artistName) {
-    let artisitURL = `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artistName}&api_key=a5297112b152bc2e75ee90f207e25d7b&format=json`;
+    let artisitURL = `https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artistName}&api_key=a5297112b152bc2e75ee90f207e25d7b&format=json`;
     this.props.fetchData(artisitURL, "artistDetails");
   }
 
