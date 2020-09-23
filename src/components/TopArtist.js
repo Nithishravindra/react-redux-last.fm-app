@@ -6,6 +6,7 @@ import { cardTileStyles } from "../styles/styles";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { Link } from "react-router-dom";
 
 class TopArtist extends Component {
   componentDidMount() {
@@ -18,22 +19,24 @@ class TopArtist extends Component {
     const { classes, topArtist } = this.props;
     let artist = topArtist.artists;
     return (
-      <Card className={classes.card}>
-        <CardContent>
-          <Typography gutterBottom component="h2" className={classes.title}>
-            <strong>{artist[i].name}</strong>
-          </Typography>
-          <Typography component="p" className={classes.overview}>
-            <strong>PLAYCOUNT</strong> - {artist[i].playcount}
-            <br />
-            <strong>LISTENERS</strong> - {artist[i].listeners}
-          </Typography>
-          <Typography component="p" className={classes.overview}>
-            <strong>URL</strong> -{" "}
-            <a href={artist[i].url}>Click here for more info</a>
-          </Typography>
-        </CardContent>
-      </Card>
+      <Link to={`/artistinfo/${artist[i].name}`}>
+        <Card className={classes.card}>
+          <CardContent>
+            <Typography gutterBottom component="h2" className={classes.title}>
+              <strong>{artist[i].name}</strong>
+            </Typography>
+            <Typography component="p" className={classes.overview}>
+              <strong>PLAYCOUNT</strong> - {artist[i].playcount}
+              <br />
+              <strong>LISTENERS</strong> - {artist[i].listeners}
+            </Typography>
+            <Typography component="p" className={classes.overview}>
+              <strong>URL</strong> -{" "}
+              <a href={artist[i].url}>Click here for more info</a>
+            </Typography>
+          </CardContent>
+        </Card>
+      </Link>
     );
   };
 
