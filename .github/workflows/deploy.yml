@@ -13,20 +13,20 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v2
           
-      - uses: actions/checkout@v2
       - name: Use Node.js 14
         uses: actions/setup-node@v1
         with:
           node-version: 14
-      - name: install
-        run: npm ci
+        
       - name: npm install
         run: npm install
+        
       - name: build
-        run: npm build
+        run: npm run build
+        
       - name: Deploy to Deno Deploy
         uses: denoland/deployctl@v1
         with:
-          project: "react-redux-last-fm-app"
+          project: react-redux-last-fm-app
           entrypoint: https://deno.land/std@0.140.0/http/file_server.ts
           root: build
